@@ -18,7 +18,7 @@ def main():
         "dataset_version": "v1",
         "prediction_target": "Order Profitability",
         "preprocessing": "MinMaxScaler",
-        "data_split": "70:30",
+        "data_split": "80:20",
         "feature_selection": "Selected 100 features",
         "accuracy": "0.9190",
         "f1_score": "0.9468",
