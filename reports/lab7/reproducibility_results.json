@@ -1,0 +1,11 @@
+{
+    "experiment": "Lab 7 - Reproducibility Test",
+    "dataset": "Global Superstore",
+    "random_state": 42,
+    "run_1_accuracy": 0.9179177227529733,
+    "run_2_accuracy": 0.9179177227529733,
+    "run_1_f1_score": 0.94600487366936,
+    "run_2_f1_score": 0.94600487366936,
+    "predictions_match": true,
+    "reproducibility_passed": true
+}

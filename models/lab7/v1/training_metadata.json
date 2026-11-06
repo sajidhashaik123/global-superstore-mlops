@@ -1,0 +1,14 @@
+{
+    "experiment": "Experiment 7 - ML Pipeline Engineering",
+    "dataset": "Global Superstore",
+    "dataset_version": "v1",
+    "target": "Profitability",
+    "algorithm": "Logistic Regression",
+    "preprocessing": "MinMaxScaler + OneHotEncoder",
+    "training_rows": 41032,
+    "input_features_before_encoding": 16,
+    "features_after_encoding": 4808,
+    "random_state": 42,
+    "max_iter": 1000,
+    "model_file": "classifier.joblib"
+}
