@@ -1,0 +1,20 @@
+{
+    "model_name": "Global Superstore Profitability Model",
+    "model_version": "v1",
+    "dataset": "Global Superstore",
+    "target": "Profitability",
+    "target_definition": "Profit > 0: 1, Profit <= 0: 0",
+    "algorithm": "Logistic Regression",
+    "preprocessing": "MinMaxScaler and OneHotEncoder",
+    "train_test_split": "70:30",
+    "random_state": 42,
+    "metrics": {
+        "accuracy": 0.918503,
+        "precision": 0.925517,
+        "recall": 0.968134,
+        "f1_score": 0.946346,
+        "roc_auc": 0.952909
+    },
+    "scikit_learn_version": "1.9.1",
+    "model_file": "profitability_model.joblib"
+}

@@ -1,0 +1,120 @@
+GLOBAL SUPERSTORE – DATASET PROFILE REPORT
+
+Experiment 1: ML Project Initialization and Dataset Preparation
+
+==================================================
+
+1. DATASET INFORMATION
+
+Dataset Name       : Global Superstore
+Original File      : global_superstore.csv
+Dataset Version    : v1
+Original Rows      : 51,290
+Original Columns   : 24
+Processed Rows     : 51,290
+Processed Columns  : 23
+
+Date Range         : 01-01-2011 to 31-12-2014
+Unique Customers   : 1,590
+Unique Orders      : 25,035
+
+==================================================
+
+2. DATA QUALITY ANALYSIS
+
+Duplicate Rows                 : 0
+Missing Postal Code Values     : 41,296
+Missing Values in Other Columns: 0
+Blank String Values            : 0
+Invalid Order Dates             : 0
+Invalid Ship Dates              : 0
+Ship Dates Before Order Dates   : 0
+Negative Sales Values           : 0
+Negative Quantity Values        : 0
+Negative Shipping Cost Values   : 0
+
+==================================================
+
+3. DATA PREPROCESSING
+
+The following operations were performed:
+
+1. Removed Postal Code due to excessive missing values.
+2. Converted Order Date into datetime format.
+3. Converted Ship Date into datetime format.
+4. Removed leading and trailing spaces from text columns.
+5. Checked duplicate records.
+
+Final Processed Dataset:
+
+Rows             : 51,290
+Columns          : 23
+Missing Values   : 0
+Duplicate Rows   : 0
+
+Output:
+data/processed/v1/global_superstore_clean.csv
+
+==================================================
+
+4. REPRODUCIBLE DATASET SPLITTING
+
+Splitting Method : train_test_split()
+Training Ratio  : 80%
+Testing Ratio   : 20%
+Random State    : 42
+Shuffling       : Enabled
+
+Training Records: 41,032
+Testing Records : 10,258
+Total Records   : 51,290
+
+Overlapping Row IDs: 0
+
+Output Files:
+
+Training:
+data/splits/v1/train.csv
+
+Testing:
+data/splits/v1/test.csv
+
+==================================================
+
+5. DATASET VERSIONING
+
+Dataset Version       : v1
+Checksum Algorithm    : SHA-256
+Checksums Generated   : Yes
+
+Manifest File:
+data/processed/v1/manifest.json
+
+The manifest records raw and processed dataset information,
+preprocessing operations, split configuration, file details,
+and SHA-256 checksums.
+
+==================================================
+
+6. REPRODUCIBILITY
+
+Reproducibility was maintained using:
+
+- Fixed random state (42).
+- Separate raw, processed, and split directories.
+- Dataset version identification.
+- SHA-256 checksum generation.
+- Documented preprocessing operations.
+
+==================================================
+
+7. FINAL RESULT
+
+The Global Superstore dataset was successfully analyzed,
+validated, preprocessed, split into training and testing
+datasets, and versioned.
+
+The original raw dataset was preserved without modification.
+
+Experiment 1 dataset preparation activities were completed
+successfully.
