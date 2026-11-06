@@ -19,3 +19,7 @@ mlruns/
 
 # Temporary and log files
 *.log
+# MLflow database
+mlflow.db
+mlflow.db-shm
+mlflow.db-wal
