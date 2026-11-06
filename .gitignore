@@ -23,3 +23,8 @@ mlruns/
 mlflow.db
 mlflow.db-shm
 mlflow.db-wal
+
+# Temporary Lab 5 and Lab 6 documentation backups
+docs/lab5_data_validation_recovered.md
+docs/lab6_model_registry_backup.md
+docs/lab6_model_registry_updated.md
