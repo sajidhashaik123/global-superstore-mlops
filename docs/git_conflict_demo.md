@@ -1,3 +1,3 @@
 # Git Merge Conflict Demonstration
 
-This project uses the master branch version.
+This is the DEVELOPMENT branch version - Updated.
