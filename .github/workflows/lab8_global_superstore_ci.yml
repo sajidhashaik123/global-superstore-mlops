@@ -22,7 +22,10 @@ on:
       - "requirements.txt"
       - ".github/workflows/lab8_global_superstore_ci.yml"
 
-  workflow_dispatch:
+    workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   ml-pipeline:
