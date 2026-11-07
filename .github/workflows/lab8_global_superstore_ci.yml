@@ -1,0 +1,63 @@
+
+name: Lab 8 - Global Superstore ML CI
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "src/lab7_*.py"
+      - "data/raw/global_superstore.csv"
+      - "data/splits/lab2/80_20/**"
+      - "requirements.txt"
+      - ".github/workflows/lab8_global_superstore_ci.yml"
+
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "src/lab7_*.py"
+      - "data/raw/global_superstore.csv"
+      - "data/splits/lab2/80_20/**"
+      - "requirements.txt"
+      - ".github/workflows/lab8_global_superstore_ci.yml"
+
+  workflow_dispatch:
+
+jobs:
+  ml-pipeline:
+    name: Run ML Pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run preprocessing, validation, training, evaluation and inference
+        run: |
+          python src/lab7_pipeline.py
+
+      - name: Run reproducibility test
+        run: |
+          python src/lab7_reproducibility.py
+
+      - name: Upload ML pipeline artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab8-ml-pipeline-results
+          path: |
+            reports/lab7/
+            models/lab7/v1/
+            data/processed/lab7/
+          if-no-files-found: warn
