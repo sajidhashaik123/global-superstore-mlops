@@ -1,0 +1,12 @@
+{
+    "total_requests": 100,
+    "successful_requests": 100,
+    "failed_requests": 0,
+    "average_latency_ms": 36.399,
+    "median_latency_ms": 37.17,
+    "minimum_latency_ms": 20.701,
+    "maximum_latency_ms": 56.317,
+    "throughput_requests_per_second": 27.473,
+    "reliability_percent": 100.0,
+    "response_consistency": true
+}

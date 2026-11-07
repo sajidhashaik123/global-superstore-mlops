@@ -1,0 +1,2 @@
+total_requests,successful_requests,failed_requests,average_latency_ms,median_latency_ms,minimum_latency_ms,maximum_latency_ms,throughput_requests_per_second,reliability_percent,response_consistency
+100,100,0,36.399,37.17,20.701,56.317,27.473,100.0,True
