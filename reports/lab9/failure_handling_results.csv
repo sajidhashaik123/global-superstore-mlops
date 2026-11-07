@@ -1,0 +1,6 @@
+Scenario,Status,Details
+Missing Data Detection and Recovery,PASSED,Failure detected and recovery verified.
+Invalid Datatype Detection and Recovery,PASSED,Failure detected and recovery verified.
+Schema Mismatch Detection and Recovery,PASSED,Failure detected and recovery verified.
+Preprocessing Error Handling and Recovery,PASSED,Failure detected and recovery verified.
+Missing Model Artifact Detection and Recovery,PASSED,Failure detected and recovery verified.
