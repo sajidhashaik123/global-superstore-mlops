@@ -1,0 +1,17 @@
+{
+    "model_version": "lab12-v2",
+    "algorithm": "Logistic Regression",
+    "dataset": "data\\processed\\lab12\\retraining_2011_2013.csv",
+    "training_start": "2011-01-01",
+    "training_end": "2013-12-31",
+    "training_records": 33759,
+    "raw_input_features": 16,
+    "encoded_features": 4417,
+    "target_column": "Profitability",
+    "target_definition": "Profitability = 1 if Profit > 0, otherwise 0",
+    "numerical_preprocessing": "MinMaxScaler",
+    "categorical_preprocessing": "OneHotEncoder(handle_unknown='ignore')",
+    "random_state": 42,
+    "max_iter": 1000,
+    "created_at": "2026-11-08T13:46:14.642067+00:00"
+}

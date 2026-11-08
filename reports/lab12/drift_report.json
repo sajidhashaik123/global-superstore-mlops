@@ -1,0 +1,181 @@
+{
+    "experiment": "Experiment 12 - Monitoring and Drift Detection",
+    "model_version": "lab7-v1",
+    "dataset": "Global Superstore",
+    "reference_period": "2011-2012",
+    "monitoring_period": "2013",
+    "reference_records": 19960,
+    "monitoring_records": 13799,
+    "data_drift": {
+        "numerical_features": [
+            {
+                "feature": "Sales",
+                "feature_type": "numerical",
+                "ks_statistic": 0.007652884579217201,
+                "p_value": 0.7226920204521993,
+                "psi": 0.0007026705765420438,
+                "drift_detected": false
+            },
+            {
+                "feature": "Quantity",
+                "feature_type": "numerical",
+                "ks_statistic": 0.004820464176414296,
+                "p_value": 0.9909660625881717,
+                "psi": 0.0003632821035670005,
+                "drift_detected": false
+            },
+            {
+                "feature": "Discount",
+                "feature_type": "numerical",
+                "ks_statistic": 0.011730483214417942,
+                "p_value": 0.20987018330413054,
+                "psi": 0.0014783658694081188,
+                "drift_detected": false
+            },
+            {
+                "feature": "Shipping Cost",
+                "feature_type": "numerical",
+                "ks_statistic": 0.01061569838713583,
+                "p_value": 0.31449372205282156,
+                "psi": 0.0015494319681267988,
+                "drift_detected": false
+            },
+            {
+                "feature": "Order Year",
+                "feature_type": "numerical",
+                "ks_statistic": 1.0,
+                "p_value": 0.0,
+                "psi": 16.44010556480438,
+                "drift_detected": true
+            },
+            {
+                "feature": "Order Month",
+                "feature_type": "numerical",
+                "ks_statistic": 0.0347205389836126,
+                "p_value": 5.567315407485045e-09,
+                "psi": 0.00735899353853588,
+                "drift_detected": true
+            }
+        ],
+        "categorical_features": [
+            {
+                "feature": "Ship Mode",
+                "feature_type": "categorical",
+                "chi_square_statistic": 7.713977108979951,
+                "p_value": 0.052308005141035,
+                "drift_detected": false
+            },
+            {
+                "feature": "Segment",
+                "feature_type": "categorical",
+                "chi_square_statistic": 5.648264920418771,
+                "p_value": 0.059360131774219144,
+                "drift_detected": false
+            },
+            {
+                "feature": "City",
+                "feature_type": "categorical",
+                "chi_square_statistic": 7569.345429298737,
+                "p_value": 0.0,
+                "drift_detected": true
+            },
+            {
+                "feature": "State",
+                "feature_type": "categorical",
+                "chi_square_statistic": 2703.9825445147926,
+                "p_value": 7.369727366500007e-153,
+                "drift_detected": true
+            },
+            {
+                "feature": "Country",
+                "feature_type": "categorical",
+                "chi_square_statistic": 453.58782894255546,
+                "p_value": 1.7295705073897174e-33,
+                "drift_detected": true
+            },
+            {
+                "feature": "Market",
+                "feature_type": "categorical",
+                "chi_square_statistic": 56.297813493399076,
+                "p_value": 2.534022773634795e-10,
+                "drift_detected": true
+            },
+            {
+                "feature": "Region",
+                "feature_type": "categorical",
+                "chi_square_statistic": 31.43267231374556,
+                "p_value": 0.0016916968395915843,
+                "drift_detected": true
+            },
+            {
+                "feature": "Category",
+                "feature_type": "categorical",
+                "chi_square_statistic": 3.168079677002576,
+                "p_value": 0.2051446705989579,
+                "drift_detected": false
+            },
+            {
+                "feature": "Sub-Category",
+                "feature_type": "categorical",
+                "chi_square_statistic": 16.819619476455397,
+                "p_value": 0.3973612802935967,
+                "drift_detected": false
+            },
+            {
+                "feature": "Order Priority",
+                "feature_type": "categorical",
+                "chi_square_statistic": 19.025289879089513,
+                "p_value": 0.0002701267068044954,
+                "drift_detected": true
+            }
+        ]
+    },
+    "prediction_drift": {
+        "ks_statistic": 0.013475795710560179,
+        "p_value": 0.10235471902541582,
+        "reference_positive_rate": 0.7778557114228457,
+        "current_positive_rate": 0.778969490542793,
+        "drift_detected": false
+    },
+    "performance": {
+        "reference": {
+            "accuracy": 0.920941883767535,
+            "precision": 0.9257374726265619,
+            "recall": 0.9712799026895527,
+            "f1_score": 0.94796201028888
+        },
+        "monitoring": {
+            "accuracy": 0.9210812377708529,
+            "precision": 0.9277142059726486,
+            "recall": 0.969661610268378,
+            "f1_score": 0.9482242190842961
+        },
+        "comparison": {
+            "accuracy": {
+                "reference": 0.920941883767535,
+                "monitoring": 0.9210812377708529,
+                "change": 0.00013935400331788195
+            },
+            "precision": {
+                "reference": 0.9257374726265619,
+                "monitoring": 0.9277142059726486,
+                "change": 0.001976733346086723
+            },
+            "recall": {
+                "reference": 0.9712799026895527,
+                "monitoring": 0.969661610268378,
+                "change": -0.0016182924211746164
+            },
+            "f1_score": {
+                "reference": 0.94796201028888,
+                "monitoring": 0.9482242190842961,
+                "change": 0.00026220879541605235
+            }
+        }
+    },
+    "limitations": [
+        "The baseline model was trained using a random split spanning all four years.",
+        "The 2013 monitoring evaluation is not an independent temporal backtest.",
+        "Statistical drift signals do not by themselves prove model degradation."
+    ]
+}
