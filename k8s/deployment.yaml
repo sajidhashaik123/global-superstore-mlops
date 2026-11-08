@@ -1,0 +1,27 @@
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: global-superstore-api
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: global-superstore-api
+
+  template:
+    metadata:
+      labels:
+        app: global-superstore-api
+
+    spec:
+      containers:
+        - name: ml-api
+          image: global-superstore-ml-api:v1
+          imagePullPolicy: Never
+
+          ports:
+            - containerPort: 8000

@@ -1,0 +1,45 @@
+{
+  "experiment": 11,
+  "title": "Docker and Kubernetes Deployment of Machine Learning Application",
+  "dataset": "Global Superstore",
+  "model": "Logistic Regression",
+  "model_version": "lab7-v1",
+  "docker": {
+    "image": "global-superstore-ml-api:v1",
+    "container": "global-superstore-api",
+    "api_port": 8000,
+    "health_check": "passed",
+    "single_prediction": "passed",
+    "batch_prediction": "passed",
+    "input_validation": "passed",
+    "image_os": "linux",
+    "architecture": "amd64"
+  },
+  "kubernetes": {
+    "cluster": "docker-desktop",
+    "deployment": "global-superstore-api",
+    "service": "global-superstore-api-service",
+    "service_type": "NodePort",
+    "node_port": 30080,
+    "replicas": 3,
+    "running_pods": 3,
+    "pod_recovery_test": "passed",
+    "debugging": "completed"
+  },
+  "dependency_isolation": "verified",
+  "prediction_consistency": {
+    "docker_prediction": "Profitable",
+    "kubernetes_prediction": "Profitable",
+    "docker_probability": 0.9923,
+    "kubernetes_probability": 0.9923,
+    "result": "matched"
+  },
+  "limitations": [
+    "Kubernetes testing was performed on a single-node local cluster.",
+    "Direct external NodePort access was not tested.",
+    "Pod deletion recovery was tested; node failure recovery was not tested.",
+    "Only one sample was used for the Docker-Kubernetes prediction consistency comparison.",
+    "Not all Python dependencies are pinned to exact versions."
+  ],
+  "overall_status": "completed"
+}

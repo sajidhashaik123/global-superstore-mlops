@@ -1,0 +1,83 @@
+
+EXPERIMENT 11: DOCKER AND KUBERNETES DEPLOYMENT
+
+1. AIM
+Containerize and deploy machine learning applications, trained models, APIs, dependencies, and configuration files using Docker in isolated and reproducible environments. Evaluate portability, dependency isolation, and prediction consistency, and explore Kubernetes-based deployment, service exposure, scaling, failure handling, debugging, and recovery workflows.
+
+2. DATASET AND MODEL
+Dataset: Global Superstore
+Model: Logistic Regression
+Model Version: lab7-v1
+Prediction Target: Profitability
+
+3. DOCKER DEPLOYMENT
+Docker image: global-superstore-ml-api:v1
+Container: global-superstore-api
+Container port: 8000
+Operating System: Linux
+Architecture: AMD64
+
+Results:
+- Docker image built successfully.
+- Container started successfully.
+- API health check passed.
+- Model metadata endpoint tested successfully.
+- Single prediction endpoint tested successfully.
+- Batch prediction endpoint tested successfully.
+- Invalid input validation tested successfully.
+
+4. KUBERNETES DEPLOYMENT
+Cluster: Docker Desktop
+Deployment: global-superstore-api
+Service: global-superstore-api-service
+Service Type: NodePort
+Node Port: 30080
+Number of Replicas: 3
+
+Results:
+- Kubernetes cluster initialized successfully.
+- Docker image imported into Kubernetes container runtime.
+- Deployment created successfully.
+- Service created successfully.
+- Three application Pods reached Running status.
+- API accessed through port forwarding.
+- Swagger documentation accessed successfully.
+
+5. PREDICTION CONSISTENCY
+Tested the same Global Superstore record in Docker and Kubernetes.
+
+Docker prediction: Profitable
+Kubernetes prediction: Profitable
+Docker probability: 0.9923
+Kubernetes probability: 0.9923
+
+Result: Both environments produced matching predictions.
+
+6. SCALING
+The Kubernetes Deployment was scaled from one replica to three replicas.
+All three Pods reached Running status.
+
+7. FAILURE HANDLING AND RECOVERY
+One running Pod was deliberately deleted.
+Kubernetes automatically created a replacement Pod.
+The Deployment returned to three available replicas.
+
+8. DEBUGGING
+Used kubectl get pods, kubectl describe pod, kubectl logs, and kubectl get events to inspect application status, container logs, and Kubernetes events.
+
+9. DEPENDENCY ISOLATION
+Verified installed Python packages inside the Docker container using pip list.
+Required application dependencies were available inside the container.
+
+10. PORTABILITY AND LIMITATIONS
+The Docker image was successfully used in standalone Docker and the local Kubernetes cluster.
+
+Limitations:
+- Kubernetes testing used a single-node local cluster.
+- Direct external NodePort access was not tested.
+- Pod deletion recovery was tested, not node failure recovery.
+- Prediction consistency was checked using one sample record.
+- Not all Python dependencies were pinned to exact versions.
+
+11. CONCLUSION
+The Global Superstore machine learning API was successfully containerized using Docker and deployed using Kubernetes. API functionality, dependency isolation, prediction consistency, scaling, Pod recovery, and debugging workflows were tested. The experiment demonstrated the practical use of Docker and Kubernetes for deploying machine learning applications.
