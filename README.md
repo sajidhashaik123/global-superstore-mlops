@@ -2,167 +2,333 @@
 
 ## 1. Project Overview
 
-This project implements MLOps concepts using the **Global Superstore dataset**.
+The Global Superstore MLOps Project demonstrates the implementation of Machine Learning Operations (MLOps) concepts using the Global Superstore dataset.
 
-The project focuses on preparing data, developing machine learning models, tracking experiments, validating datasets, managing model versions, building ML pipelines, automating workflows, serving models through APIs, and deploying applications using Docker and Kubernetes.
+The project covers the complete machine learning lifecycle, starting from dataset preparation and preprocessing to model development, experiment tracking, model deployment, monitoring, drift detection and retraining.
 
-The same Global Superstore dataset is used throughout the project.
+The main objective is to develop a reproducible, automated and traceable MLOps workflow by integrating different tools and technologies.
+
+**Technologies Used:**
+- Python
+- Pandas and NumPy
+- Scikit-learn
+- MLflow
+- Git and GitHub
+- FastAPI
+- Docker
+- Kubernetes
+- GitHub Actions
 
 ## 2. Dataset Information
 
-- **Dataset:** Global Superstore
-- **Original file:** `global_superstore.csv`
-- **Original records:** 51,290
-- **Original columns:** 24
-- **Processed columns:** 23
-- **Date range:** January 2011 – December 2014
-- **Dataset version:** v1
+**Dataset:** Global Superstore
 
-### Dataset Preprocessing
+| Attribute | Details |
+|---|---|
+| Original records | 51,290 |
+| Original columns | 24 |
+| Processed records | 51,290 |
+| Processed columns | 23 |
+| Date range | 2011–2014 |
+| Dataset version | v1 |
+
+### Data Preprocessing
 
 The following preprocessing operations were performed:
 
-- Removed the Postal Code column because it contained excessive missing values.
+- Removed the Postal Code column because it contained 41,296 missing values.
 - Converted Order Date and Ship Date into datetime format.
-- Removed leading and trailing spaces from text columns.
-- Checked duplicate records and missing values.
+- Removed unnecessary leading and trailing spaces from text columns.
+- Checked missing values and duplicate records.
 - Preserved valid negative Profit values.
+- Generated dataset version information using SHA-256 checksums.
+
+**Processed dataset:** `data/processed/v1/global_superstore_clean.csv`
+
+### Prediction Objective
+
+The project implements a binary classification task to predict transaction profitability.
+
+- Profit greater than zero: Profitability = 1
+- Profit less than or equal to zero: Profitability = 0
+
+The model uses numerical and categorical features from the Global Superstore dataset.
 
 ## 3. Project Structure
 
-```text
-global_superstore_mlop_project/
-│
-├── data/
-│   ├── raw/
-│   │   └── global_superstore.csv
-│   │
-│   ├── processed/
-│   │   └── v1/
-│   │       ├── global_superstore_clean.csv
-│   │       └── manifest.json
-│   │
-│   └── splits/
-│       └── v1/
-│           ├── train.csv
-│           └── test.csv
-│
-├── docs/
-│   └── lab1_preprocessing.md
-│
-├── reports/
-│   ├── lab1_dataset_profile.json
-│   └── lab1_dataset_profile.txt
-│
-├── src/
-│   ├── data_loader.py
-│   ├── data_analysis.py
-│   ├── data_validation.py
-│   ├── test_validation.py
-│   ├── preprocess_data.py
-│   ├── split_dataset.py
-│   └── version_dataset.py
-│
-├── .gitignore
-├── README.md
-└── requirements.txt
-```
+The project is organized into separate folders for datasets, source code, models, reports, documentation and deployment configurations.
+
+- `data/` – Raw and processed datasets, dataset versions and splits.
+- `src/` – Source code developed throughout the experiments.
+- `models/` – Trained model artifacts and version-specific preprocessors.
+- `reports/` – Experiment results, evaluation metrics and monitoring reports.
+- `docs/` – Experiment documentation.
+- `k8s/` – Kubernetes deployment, service and storage configurations.
+- `.github/workflows/` – GitHub Actions automation workflows.
+- `Dockerfile` – Existing application Docker configuration.
+- `Dockerfile.lab13` – Experiment 13 Docker configuration.
+- `requirements.txt` – Python dependencies.
+- `.gitignore` – Files and folders excluded from Git tracking.
 
 ## 4. Environment Setup
 
-### Step 1: Create a Virtual Environment
+### Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-### Step 2: Activate the Virtual Environment
+### Activate the environment
 
-For Windows PowerShell:
+Windows PowerShell:
 
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
 
-### Step 3: Install Dependencies
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 5. Experiment 1 – ML Project Initialization and Dataset Preparation
+## 5. Experiment Implementation
 
-**Status: Completed**
+All 13 experiments have been completed using the Global Superstore dataset.
 
-Activities performed:
+| Experiment | Description | Status |
+|---|---|---|
+| 1 | ML Project Initialization and Dataset Preparation | Completed |
+| 2 | Baseline Model Development and Evaluation | Completed |
+| 3 | Git-Based Version Control and Collaborative ML Workflows | Completed |
+| 4 | Experiment Tracking and Reproducibility with MLflow | Completed |
+| 5 | Data Validation and Reproducible ML Pipelines | Completed |
+| 6 | Model Registry and Version Management | Completed |
+| 7 | ML Pipeline Engineering | Completed |
+| 8 | Pipeline Automation and Continuous Integration | Completed |
+| 9 | Pipeline Failure Handling and Recovery | Completed |
+| 10 | Model Serving using FastAPI | Completed |
+| 11 | Containerization and Deployment using Docker and Kubernetes | Completed |
+| 12 | Monitoring, Drift Detection and Model Retraining | Completed |
+| 13 | End-to-End MLOps System Mini Project | Completed |
 
-- Loaded and analyzed the Global Superstore dataset.
-- Examined data types, missing values, duplicate records, and categorical distributions.
-- Validated date columns and numerical values.
-- Preprocessed the dataset.
-- Created reproducible training and testing datasets.
-- Generated dataset version information using SHA-256 checksums.
-- Documented the preprocessing and dataset details.
+## 6. Model Development and Lifecycle Management
 
-### Dataset Split
+The project maintains multiple model versions to demonstrate model development, evaluation and lifecycle management.
 
-| Dataset | Records |
-|---|---:|
-| Training | 41,032 |
-| Testing | 10,258 |
-| Total | 51,290 |
+| Model Version | Description | Status |
+|---|---|---|
+| lab7-v1 | Baseline model | Production |
+| lab12-v2 | Retrained model | Candidate - Not Promoted |
+| lab13-v3 | Experiment 13 retrained model | Candidate - Not Promoted |
 
-- **Training percentage:** 80%
-- **Testing percentage:** 20%
-- **Random state:** 42
+The models use Logistic Regression with MinMaxScaler and OneHotEncoder preprocessing.
 
-## 6. Planned MLOps Experiments
+Model performance is evaluated using:
 
-The project covers the following 11 experiments:
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- ROC-AUC
+- Confusion Matrix
 
-1. ML Project Initialization and Dataset Preparation
-2. Baseline Model Development and Evaluation
-3. Git-Based Version Control and Collaborative ML Workflows
-4. Experiment Tracking and Reproducibility with MLflow
-5. Data Validation and Reproducible ML Pipelines
-6. Model Registry and Version Management
-7. ML Pipeline Engineering
-8. Pipeline Automation and Continuous Integration
-9. Pipeline Failure Handling and Recovery
-10. Model Serving using FastAPI
-11. Containerization and Deployment using Docker and Kubernetes
+The baseline model remains the production model because it achieved stronger results in the recorded evaluation comparison.
 
-All experiments will use the Global Superstore dataset, with each experiment adapted to an appropriate task supported by the dataset.
+Note: The baseline and retrained models used different training periods, so their evaluation results are not a fully like-for-like comparison.
 
-## 7. Reproducibility
+## 7. Experiment Tracking Using MLflow
 
-To maintain reproducibility:
+MLflow is used to maintain experiment tracking and reproducibility.
 
-- The original raw dataset is preserved.
-- Processed datasets are stored separately.
-- Dataset splits use a fixed random state of 42.
-- Dataset versions are maintained.
-- SHA-256 checksums are generated.
-- Dependencies are listed in `requirements.txt`.
+The tracking process records:
 
-## 8. Current Project Progress
+- Model versions
+- Training parameters
+- Evaluation metrics
+- Model artifacts
+- Model lifecycle information
 
-| Experiment | Status |
+Experiment 13 uses the MLflow experiment:
+
+`Global_Superstore_Lab13_E2E`
+
+## 8. End-to-End MLOps Pipeline
+
+Experiment 13 integrates the components developed in the earlier experiments into an end-to-end MLOps workflow.
+
+The integrated workflow includes:
+
+1. Dataset validation.
+2. Dataset checksum verification.
+3. Model artifact verification.
+4. Model prediction validation.
+5. Model lifecycle verification.
+6. Model evaluation report verification.
+7. MLflow tracking verification.
+8. Deployment configuration verification.
+9. End-to-end execution report generation.
+
+### Integration Validation
+
+Run:
+
+```bash
+python -m src.lab13.validation
+```
+
+### End-to-End Orchestration
+
+Run:
+
+```bash
+python -m src.lab13.orchestrator
+```
+
+The generated execution report is stored in:
+
+`reports/lab13/e2e_execution_report.json`
+
+## 9. Model Serving Using FastAPI
+
+FastAPI is used to expose the trained model through REST API endpoints.
+
+The Lab13 API provides:
+
+| Endpoint | Purpose |
 |---|---|
-| Experiment 1 – Dataset Preparation | Completed |
-| Experiment 2 – Baseline Model Development | Pending |
-| Experiment 3 – Git Workflows | Pending |
-| Experiment 4 – MLflow Tracking | Pending |
-| Experiment 5 – Data Validation Pipelines | Pending |
-| Experiment 6 – Model Registry | Pending |
-| Experiment 7 – ML Pipeline Engineering | Pending |
-| Experiment 8 – Pipeline Automation | Pending |
-| Experiment 9 – Failure Handling | Pending |
-| Experiment 10 – FastAPI Model Serving | Pending |
-| Experiment 11 – Docker and Kubernetes | Pending |
+| `/` | API information |
+| `/health` | Health check |
+| `/metadata` | Model metadata |
+| `/predict` | Single prediction |
+| `/predict/batch` | Batch predictions |
+| `/monitoring/metrics` | Monitoring metrics |
+
+The API also records request information and prediction activity.
+
+## 10. Docker Deployment
+
+Docker is used to package the Experiment 13 application and its dependencies into a container.
+
+The separate Docker configuration is:
+
+`Dockerfile.lab13`
+
+### Build the Docker image
+
+```bash
+docker build -f Dockerfile.lab13 -t global-superstore-mlops-e2e:v1 .
+```
+
+### Run the container
+
+```bash
+docker run -d --name global-superstore-lab13 -p 8001:8000 global-superstore-mlops-e2e:v1
+```
+
+The API can be accessed at:
+
+`http://localhost:8001`
+
+API documentation:
+
+`http://localhost:8001/docs`
+
+## 11. Kubernetes Deployment
+
+Kubernetes is used to deploy and manage the Experiment 13 application.
+
+The Lab13 Kubernetes configurations are maintained separately under `k8s/lab13/`.
+
+The configurations include:
+
+- Deployment configuration
+- NodePort service
+- Persistent Volume Claim
+- Container health probes
+- Persistent API log storage
+
+The Lab13 service uses NodePort 30081.
+
+The application can also be accessed using Kubernetes port forwarding:
+
+```bash
+kubectl port-forward deployment/global-superstore-lab13 8002:8000
+```
+
+Access the API through:
+
+`http://localhost:8002`
+
+## 12. Monitoring and Retraining
+
+Experiment 12 and Experiment 13 demonstrate monitoring and retraining workflows.
+
+The monitoring and retraining process includes:
+
+- Monitoring model performance.
+- Detecting data drift.
+- Preparing retraining datasets.
+- Training new model versions.
+- Evaluating retrained models.
+- Comparing model performance.
+- Managing model promotion decisions.
+
+The existing production model is retained when a candidate model does not demonstrate better evaluation performance.
+
+## 13. GitHub Actions Automation
+
+The Experiment 13 workflow is maintained at:
+
+`.github/workflows/lab13_e2e.yml`
+
+The workflow supports:
+
+- Push events to the master branch.
+- Pull requests targeting the master branch.
+- Manual execution using workflow_dispatch.
+
+The workflow automates:
+
+- Dependency installation.
+- Model retraining.
+- Model evaluation.
+- Lifecycle registry updates.
+- MLflow experiment tracking.
+- Integration validation.
+- End-to-end orchestration.
+- Artifact uploading.
+
+Docker building and Kubernetes deployment remain separate deployment operations.
+
+## 14. Reproducibility
+
+The project follows reproducibility practices through:
+
+- Dataset versioning.
+- SHA-256 checksum verification.
+- Version-specific model artifacts.
+- Fixed random states where applicable.
+- Dependency version pinning.
+- MLflow experiment tracking.
+- Dataset and model validation.
+- Git-based source code version control.
+- Documented execution workflows.
+
+## 15. Final Outcome
+
+The Global Superstore MLOps Project demonstrates the implementation of an integrated machine learning lifecycle using practical MLOps tools and technologies.
+
+All 13 experiments have been completed.
+
+The final Experiment 13 implementation integrates dataset validation, model versioning, experiment tracking, lifecycle management, pipeline orchestration, API serving, Docker containerization, Kubernetes deployment, monitoring and GitHub Actions automation.
+
+The project provides a reproducible and traceable workflow for managing machine learning models from development to deployment and monitoring.
 
 ---
 
 **Project:** Global Superstore MLOps Project  
 **Dataset:** Global Superstore  
-**Purpose:** Practical implementation of MLOps concepts using a consistent dataset.
+**Domain:** Machine Learning Operations (MLOps)  
+**Experiments Completed:** 13  
+**Primary Objective:** Develop an end-to-end, reproducible and traceable MLOps system.
