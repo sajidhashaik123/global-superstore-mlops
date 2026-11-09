@@ -1,0 +1,144 @@
+{
+    "project": "Global Superstore MLOps",
+    "experiment": "Experiment 13",
+    "evaluation_dataset": "evaluation_2014.csv",
+    "evaluation_period": "2014-01-01 to 2014-12-31",
+    "evaluation_records": 17531,
+    "target_column": "Profitability",
+    "target_definition": "1 if Profit > 0, otherwise 0",
+    "models": {
+        "lab7-v1": {
+            "accuracy": 0.9225372197821002,
+            "precision": 0.9290032438808611,
+            "recall": 0.9696060326254232,
+            "f1_score": 0.9488704819277108,
+            "roc_auc": 0.962857624243979,
+            "confusion_matrix": [
+                [
+                    3572,
+                    963
+                ],
+                [
+                    395,
+                    12601
+                ]
+            ],
+            "classification_report": {
+                "0": {
+                    "precision": 0.9004285354171918,
+                    "recall": 0.787651598676957,
+                    "f1-score": 0.8402728769701246,
+                    "support": 4535.0
+                },
+                "1": {
+                    "precision": 0.9290032438808611,
+                    "recall": 0.9696060326254232,
+                    "f1-score": 0.9488704819277108,
+                    "support": 12996.0
+                },
+                "accuracy": 0.9225372197821002,
+                "macro avg": {
+                    "precision": 0.9147158896490264,
+                    "recall": 0.8786288156511901,
+                    "f1-score": 0.8945716794489178,
+                    "support": 17531.0
+                },
+                "weighted avg": {
+                    "precision": 0.9216114063996712,
+                    "recall": 0.9225372197821002,
+                    "f1-score": 0.9207779522099164,
+                    "support": 17531.0
+                }
+            }
+        },
+        "lab12-v2": {
+            "accuracy": 0.9180309166619132,
+            "precision": 0.9266258212150291,
+            "recall": 0.9659125884887658,
+            "f1_score": 0.9458614323927212,
+            "roc_auc": 0.9504005133629447,
+            "confusion_matrix": [
+                [
+                    3541,
+                    994
+                ],
+                [
+                    443,
+                    12553
+                ]
+            ],
+            "classification_report": {
+                "0": {
+                    "precision": 0.8888052208835341,
+                    "recall": 0.7808158765159867,
+                    "f1-score": 0.831318229839183,
+                    "support": 4535.0
+                },
+                "1": {
+                    "precision": 0.9266258212150291,
+                    "recall": 0.9659125884887658,
+                    "f1-score": 0.9458614323927212,
+                    "support": 12996.0
+                },
+                "accuracy": 0.9180309166619132,
+                "macro avg": {
+                    "precision": 0.9077155210492815,
+                    "recall": 0.8733642325023763,
+                    "f1-score": 0.8885898311159521,
+                    "support": 17531.0
+                },
+                "weighted avg": {
+                    "precision": 0.916842213748066,
+                    "recall": 0.9180309166619132,
+                    "f1-score": 0.9162308680449774,
+                    "support": 17531.0
+                }
+            }
+        },
+        "lab13-v3": {
+            "accuracy": 0.9180309166619132,
+            "precision": 0.9266258212150291,
+            "recall": 0.9659125884887658,
+            "f1_score": 0.9458614323927212,
+            "roc_auc": 0.9504005133629447,
+            "confusion_matrix": [
+                [
+                    3541,
+                    994
+                ],
+                [
+                    443,
+                    12553
+                ]
+            ],
+            "classification_report": {
+                "0": {
+                    "precision": 0.8888052208835341,
+                    "recall": 0.7808158765159867,
+                    "f1-score": 0.831318229839183,
+                    "support": 4535.0
+                },
+                "1": {
+                    "precision": 0.9266258212150291,
+                    "recall": 0.9659125884887658,
+                    "f1-score": 0.9458614323927212,
+                    "support": 12996.0
+                },
+                "accuracy": 0.9180309166619132,
+                "macro avg": {
+                    "precision": 0.9077155210492815,
+                    "recall": 0.8733642325023763,
+                    "f1-score": 0.8885898311159521,
+                    "support": 17531.0
+                },
+                "weighted avg": {
+                    "precision": 0.916842213748066,
+                    "recall": 0.9180309166619132,
+                    "f1-score": 0.9162308680449774,
+                    "support": 17531.0
+                }
+            }
+        }
+    },
+    "evaluation_timestamp": "2026-11-08T21:00:02.885851+00:00"
+}

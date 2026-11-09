@@ -1,0 +1,26 @@
+
+FROM python:3.13-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy source code
+COPY src/ ./src/
+
+# Copy existing model versions
+COPY models/lab7/v1/ ./models/lab7/v1/
+COPY models/lab12/v2/ ./models/lab12/v2/
+
+# Create monitoring log directory
+RUN mkdir -p /app/reports/lab13/logs
+
+# Expose API port
+EXPOSE 8000
+
+# Start Lab13 API
+CMD ["python", "-m", "uvicorn", "src.lab13.api:app", "--host", "0.0.0.0", "--port", "8000"]

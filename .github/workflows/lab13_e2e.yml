@@ -1,0 +1,92 @@
+﻿name: Experiment 13 - End-to-End MLOps
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "src/lab13/**"
+      - "data/processed/lab12/**"
+      - "reports/lab12/**"
+      - "data/processed/v1/**"
+      - "models/lab7/v1/**"
+      - "models/lab12/v2/**"
+      - "requirements.txt"
+      - "Dockerfile.lab13"
+      - "k8s/lab13/**"
+      - ".github/workflows/lab13_e2e.yml"
+
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "src/lab13/**"
+      - "data/processed/lab12/**"
+      - "reports/lab12/**"
+      - "data/processed/v1/**"
+      - "models/lab7/v1/**"
+      - "models/lab12/v2/**"
+      - "requirements.txt"
+      - "Dockerfile.lab13"
+      - "k8s/lab13/**"
+      - ".github/workflows/lab13_e2e.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  end-to-end-mlops:
+    name: Run Experiment 13
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Retrain Lab13 model
+        run: python -m src.lab13.retrain_model
+
+      - name: Evaluate all three models
+        run: python -m src.lab13.evaluate_models
+
+      - name: Initialize lifecycle registry
+        run: |
+          python -c "from src.lab13.lifecycle import create_initial_registry; create_initial_registry()"
+
+      - name: Update model lifecycle
+        run: python -m src.lab13.lifecycle
+
+      - name: Track models with MLflow
+        run: python -m src.lab13.mlflow_tracking
+
+      - name: Run integration validation
+        run: python -m src.lab13.validation
+
+      - name: Run end-to-end orchestrator
+        run: python -m src.lab13.orchestrator
+
+      - name: Upload Experiment 13 artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-13-mlops-results
+          path: |
+            reports/lab13/e2e_execution_report.json
+            reports/lab13/model_evaluation_comparison.json
+            reports/lab13/model_lifecycle.json
+            models/lab13/v3/
+          if-no-files-found: warn
+

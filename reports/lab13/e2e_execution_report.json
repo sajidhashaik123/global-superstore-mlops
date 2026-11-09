@@ -1,0 +1,40 @@
+{
+    "project": "Global Superstore MLOps",
+    "experiment": "Experiment 13",
+    "execution_time": "2026-11-08T21:13:10.510097+00:00",
+    "stages": {
+        "integration_validation": {
+            "status": "passed"
+        },
+        "mlflow_tracking": {
+            "experiment_name": "Global_Superstore_Lab13_E2E",
+            "experiment_id": "1",
+            "total_runs": 5,
+            "tracked_models": [
+                "lab12-v2",
+                "lab13-v3",
+                "lab7-v1"
+            ],
+            "status": "passed"
+        },
+        "model_lifecycle": {
+            "production_model": "lab7-v1",
+            "model_versions": {
+                "lab7-v1": "production",
+                "lab12-v2": "candidate_not_promoted",
+                "lab13-v3": "candidate_not_promoted"
+            },
+            "status": "passed"
+        },
+        "deployment_configuration": {
+            "verified_files": [
+                "Dockerfile.lab13",
+                "k8s\\lab13\\deployment.yaml",
+                "k8s\\lab13\\service.yaml",
+                "k8s\\lab13\\pvc.yaml"
+            ],
+            "status": "passed"
+        }
+    },
+    "overall_status": "passed"
+}

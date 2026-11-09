@@ -1,0 +1,25 @@
+{
+    "project": "Global Superstore MLOps",
+    "created_at": "2026-11-08T19:12:31.889067+00:00",
+    "current_production_model": "lab7-v1",
+    "models": {
+        "lab7-v1": {
+            "version": "lab7-v1",
+            "status": "production",
+            "artifact_location": "models/lab7/v1",
+            "description": "Existing baseline profitability model"
+        },
+        "lab12-v2": {
+            "version": "lab12-v2",
+            "status": "candidate_not_promoted",
+            "artifact_location": "models/lab12/v2",
+            "description": "Retrained candidate model; not promoted because baseline evaluation metrics were higher"
+        },
+        "lab13-v3": {
+            "version": "lab13-v3",
+            "status": "candidate_not_promoted",
+            "artifact_location": "models/lab13/v3",
+            "description": "Experiment 13 retrained candidate model; not promoted because baseline evaluation metrics were higher"
+        }
+    }
+}
